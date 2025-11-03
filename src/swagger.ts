@@ -4,8 +4,7 @@ import mongooseToSwagger from "mongoose-to-swagger";
 import {Express} from 'express';
 import Role from './models/role.model';
 import User from './models/user.model';
-import { secureHeapUsed } from "crypto";
-
+ 
 const options: swaggerJSDoc.Options = {
   definition: {
     openapi: "3.0.0",
@@ -14,14 +13,14 @@ const options: swaggerJSDoc.Options = {
       version: "1.0.0",
       description: "Api for Users written in typescript"
     },
-    server: [
+    servers: [
       {
         url: "http://localhost:3000/api",
         description: "Local Server"
       }
     ],
     components: {
-      SecuritySchemas: {
+      securitySchemes: {
         bearerAuth: {
           type: "http",
           scheme: "bearer",
@@ -37,9 +36,9 @@ const options: swaggerJSDoc.Options = {
   },
   apis: ['./src/routes/*.ts']
 };
-
+ 
 export const swaggerSpec = swaggerJSDoc(options);
-
+ 
 export const setupSwagger = (app:Express) => {
   app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 }
