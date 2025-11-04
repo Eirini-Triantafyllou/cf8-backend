@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 
-import userRoutes from './routes/user.routes';
+import userRoutes  from './routes/user.routes';
 import roleRoutes from './routes/role.routes';
 import authRoutes from './routes/auth.routes';
 
